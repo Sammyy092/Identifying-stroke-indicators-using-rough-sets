@@ -3,7 +3,9 @@ dec_table_files = [];
 colorch_ranks_files = [];
 ok_status = 1;
 B=transpose(combfeature);
+% combfeature here is our dataset including column 1 to 10
 [IDX, Z] = rankfeatures(B, Group, 'Criterion', 'wilcoxon');
+% group is the last column
   disp ('Skipping this mono-cluster image') ;
   disp('All channels extracted');
   TF = isinf(Z);
