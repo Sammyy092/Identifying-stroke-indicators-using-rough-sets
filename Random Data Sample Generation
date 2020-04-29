@@ -1,0 +1,1 @@
+sampledata=datasample(NormalizedDataa,29072,'Replace', false');
