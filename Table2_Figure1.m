@@ -1,4 +1,4 @@
-%This code provides the KNN results for each conditional attribute. 
+
 
 %%
 addpath('./scripts/');
