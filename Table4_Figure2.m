@@ -76,11 +76,23 @@ load('./results/avg_accuracy_T4_F2.mat');
 
 
 % Proposed approach
-impact_vector = [];
-for u=1:10
-    [impact_value] =  impactfactor_from_data(normalized_data, u);
-    impact_vector = cat(2,impact_vector,impact_value);
+
+% Generating impact score values earlier (compatability with less R15a)
+existence_status = exist('discretize');
+if (existence_status)
+    disp ('Newer MATLAB - discretize exists.')
+    disp ('Computing the quantization values');
+    impact_vector = [];
+    for u=1:10
+        [impact_value] =  impactfactor_from_data(normalized_data, u);
+        impact_vector = cat(2,impact_vector,impact_value);
+    end
+    save('./data/impact_vector_T4F2.mat','impact_vector')
+else
+    disp ('Older MATLAB - loading pre-computed value.')
+    load('./data/impact_vector_T4F2.mat')
 end
+
 
 % Scatter plot
 [RHO_proposed,~] = corr(avg_accuracy', impact_vector', 'Type', 'Pearson')

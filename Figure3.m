@@ -15,6 +15,7 @@ total_observations = number_of_positive_stroke + number_of_negative_stroke;
 % score matricies which is an approximate assumption.
 existence_status = exist('discretize');
 if (existence_status)
+    disp ('Newer MATLAB - discretize exists.')
     disp ('Computing the quantization values');
     
     impactscore_matrix = [];
@@ -34,6 +35,7 @@ if (existence_status)
     end
     save('./data/impactscore_matrix_F3.mat','impactscore_matrix')
 else
+    disp ('Older MATLAB - loading pre-computed value.')
     load('./data/impactscore_matrix_F3.mat')
 end
 
