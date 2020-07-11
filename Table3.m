@@ -1,4 +1,4 @@
-% %
+%%
 
 addpath('./scripts/');
 
@@ -16,19 +16,23 @@ sampledata=datasample(normalized_data,total_observations,'Replace', false');
 
 % % Discretization
 % original = 5 4 5
-qw = multithresh(sampledata(:,3),7);
-age_levels=[0,qw, max(sampledata(:,3))];
-quantised_age = discretize_my(sampledata(:,3), age_levels);
+% qw = multithresh(sampledata(:,3),7);
+% age_levels=[0,qw, max(sampledata(:,3))];
+% quantised_age = discretize(sampledata(:,3), age_levels);
+% 
+% qw1 = multithresh(sampledata(:,9),3);
+% avgglucose_levels = [0,qw1, max(sampledata(:,9))];
+% quantised_avgglucose = discretize(sampledata(:,9), avgglucose_levels);
+% 
+% qw2 = multithresh(sampledata(:,10),3);
+% bmi_levels = [0,qw2, max(sampledata(:,10))];
+% quantised_bmi = discretize(sampledata(:,10), bmi_levels);
 
-qw1 = multithresh(sampledata(:,9),3);
-avgglucose_levels = [0,qw1, max(sampledata(:,9))];
-quantised_avgglucose = discretize_my(sampledata(:,9), avgglucose_levels);
+%save('./data/quantmat.mat','quantised_age', 'quantised_avgglucose', 'quantised_bmi');
 
-qw2 = multithresh(sampledata(:,10),3);
-bmi_levels = [0,qw2, max(sampledata(:,10))];
-quantised_bmi = discretize_my(sampledata(:,10), bmi_levels);
+load('./data/quantmat.mat')
 
-
+%%
 newsampledata = cat(2, sampledata(:,2), quantised_age, sampledata(:,4), sampledata(:,5), sampledata(:,6), sampledata(:,7), sampledata(:,8), quantised_avgglucose, quantised_bmi, sampledata(:,11), sampledata(:,12));
 
 
