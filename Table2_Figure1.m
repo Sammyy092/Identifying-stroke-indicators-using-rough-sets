@@ -32,7 +32,7 @@ precision_matrix = [];
 recall_matrix = [];
 fscore_matrix = [];
 
-no_of_experiments = 5000;
+no_of_experiments = 100;
 for v=1:no_of_experiments
     
     disp(['performing for experiment = ', num2str(v), '/', num2str(no_of_experiments)]);
