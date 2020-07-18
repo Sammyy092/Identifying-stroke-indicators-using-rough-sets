@@ -8,41 +8,6 @@ number_of_positive_stroke = sum(normalized_data(:,12) == 1);
 number_of_negative_stroke = sum(normalized_data(:,12) == 0);
 total_observations = number_of_positive_stroke + number_of_negative_stroke;
 
-
-
-% Generating impact score values earlier (compatability with less R15a)
-% If the discretize function does not exist, we load pre-computed impact
-% score matricies which is an approximate assumption.
-existence_status = exist('discretize');
-if (existence_status)
-    disp ('Newer MATLAB - discretize exists.')
-    disp ('Computing the quantization values');
-    
-    impactscore_matrix = [];
-    for percentage_of_data = (10:10:100)
-        
-        disp(['performing for percentage = ', num2str(percentage_of_data)]);
-        number_of_dataobs = round((percentage_of_data/100)*total_observations);
-        sampledata=datasample(normalized_data,number_of_dataobs,'Replace', false');
-
-        impactscore_array = [];
-        for u = 1:10
-            impactscore =  impactfactor_from_data(sampledata, u);
-            impactscore_array = cat(2,impactscore_array,impactscore);
-        end
-        impactscore_matrix = cat(1, impactscore_matrix, impactscore_array);
-
-    end
-    save('./data/impactscore_matrix_F3.mat','impactscore_matrix')
-else
-    disp ('Older MATLAB - loading pre-computed value.')
-    load('./data/impactscore_matrix_F3.mat')
-end
-
-
-
-
-
 R_matrix = [];
 for percentage_of_data = (10:10:100)
     
@@ -50,11 +15,6 @@ for percentage_of_data = (10:10:100)
     number_of_dataobs = round((percentage_of_data/100)*total_observations);
 
     sampledata=datasample(normalized_data,number_of_dataobs,'Replace', false');
-    
-    
-    
-    
-
 
     % Creating the random dataset having the rows with equal number of 0's and 1's in decsion attribute
     lastcoulumn=sampledata(:,11);
@@ -69,14 +29,9 @@ for percentage_of_data = (10:10:100)
     test=int16(a+1);
 
     accuracy_matrix = [];
-    
-    % Recomputing again
-    if (existence_status~=0)
-        impactscore_matrix = [];
-    end
-    
+    impactscore_matrix = [];
 
-    no_of_exps = 5000;
+    no_of_exps = 50;
 
 
 
@@ -90,9 +45,7 @@ for percentage_of_data = (10:10:100)
             z=datasample(newtable,yes_length+yes_length,'Replace', false');
 
             accuracy_array = [];
-            if (existence_status~=0)
-                impactscore_array = [];
-            end
+            impactscore_array = [];
             for u=1:10
 
                 % z is a new dataset having equal number of 1's and 0's in the decision attribute
@@ -113,18 +66,14 @@ for percentage_of_data = (10:10:100)
                 accuracy = 100 - (sum(abs(label-Y_test))/length(Y_test))*100;
                 accuracy_array = cat(2,accuracy_array,accuracy);
 
-                if (existence_status~=0)
-                    impactscore =  impactfactor_from_data(sampledata, u);
-                    impactscore_array = cat(2,impactscore_array,impactscore);
-                end
+                impactscore =  impactfactor_from_data(sampledata, u);
+                impactscore_array = cat(2,impactscore_array,impactscore);
 
             end
 
             accuracy_matrix = cat(1,accuracy_matrix,accuracy_array);
-            
-            if (existence_status~=0)
-                impactscore_matrix = cat(1, impactscore_matrix, impactscore_array);
-            end
+            impactscore_matrix = cat(1, impactscore_matrix, impactscore_array);
+
 
     end
 
