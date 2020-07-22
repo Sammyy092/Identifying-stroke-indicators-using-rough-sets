@@ -29,7 +29,7 @@ test=int16(a+1);
 accuracy_matrix = [];
 
 
-no_of_exps = 5000;
+no_of_exps = 100;
 
 for v=1:no_of_exps 
     
