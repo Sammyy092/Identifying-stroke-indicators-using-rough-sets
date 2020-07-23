@@ -1,0 +1,30 @@
+The dependence value of the queried attribute w.r.t. gender is: 0.035818
+
+
+The dependence value of the queried attribute w.r.t. age is: 0.092076
+
+
+The dependence value of the queried attribute w.r.t. hyper tension is: 0.046982
+
+
+The dependence value of the queried attribute w.r.t. heart disease is: 0.055979
+
+
+The dependence value of the queried attribute w.r.t. ever marred is: 0.039746
+
+
+The dependence value of the queried attribute w.r.t. work type is: 0.040451
+
+
+The dependence value of the queried attribute w.r.t. residence is: 0.035538
+
+
+The dependence value of the queried attribute w.r.t. average glucose is: 0.047554
+
+
+The dependence value of the queried attribute w.r.t. bmi is: 0.035810
+
+
+The dependence value of the queried attribute w.r.t. smoking status is: 0.036945
+
+
