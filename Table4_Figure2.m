@@ -94,22 +94,26 @@ else
 end
 
 
+%%
+load('./results/avg_accuracy_T4_F2.mat');
+load('./data/impact_vector_T4F2.mat');
+
 % Scatter plot
 [RHO_proposed,~] = corr(avg_accuracy', impact_vector', 'Type', 'Pearson')
 
 
-% figure(1);
-% c = cell(10,1);
-% c{1,1} = 'gender'; c{2,1} = 'age'; c{3,1} = 'hypertension'; c{4,1} = 'heart.disease';
-% c{5,1} = 'ever.married'; c{6,1} = 'work.type'; c{7,1} = 'residence.type'; c{8,1} = 'avg.glucose.level';
-% c{9,1} = 'bmi'; c{10,1} = 'smoking.status';
-% scatter(avg_accuracy', impact_vector','filled');
-% dx = 0.001; dy = 0.001;
-% x = avg_accuracy';
-% y = impact_vector';
-% text(x+dx, y+dy, c);
-% xlabel('Accuracy (in %)');
-% ylabel('Impact factor');
+figure(1);
+c = cell(10,1);
+c{1,1} = 'gender'; c{2,1} = 'age'; c{3,1} = 'hypertension'; c{4,1} = 'heart.disease';
+c{5,1} = 'ever.married'; c{6,1} = 'work.type'; c{7,1} = 'residence.type'; c{8,1} = 'avg.glucose.level';
+c{9,1} = 'bmi'; c{10,1} = 'smoking.status';
+scatter(avg_accuracy', impact_vector','filled');
+dx = 0.001; dy = 0.001;
+x = avg_accuracy';
+y = impact_vector';
+text(x+dx, y+dy, c);
+xlabel('Accuracy (in %)');
+ylabel('Impact factor');
 
 
 % Bimodality
@@ -125,19 +129,19 @@ end
 [RHO_bimodality,~] = corr(avg_accuracy', bimod_vector', 'Type', 'Pearson')
 
 
-% figure(2);
-% %a = (1:length(bimod_vector))'; b = num2str(a); c = cellstr(b);
-% c = cell(10,1);
-% c{1,1} = 'gender'; c{2,1} = 'age'; c{3,1} = 'hypertension'; c{4,1} = 'heart.disease';
-% c{5,1} = 'ever.married'; c{6,1} = 'work.type'; c{7,1} = 'residence.type'; c{8,1} = 'avg.glucose.level';
-% c{9,1} = 'bmi'; c{10,1} = 'smoking.status';
-% scatter(avg_accuracy', bimod_vector','filled');
-% dx = 0.001; dy = 0.001;
-% x = avg_accuracy';
-% y = bimod_vector';
-% text(x+dx, y+dy, c);
-% xlabel('Accuracy (in %)');
-% ylabel('Bimodality');
+figure(2);
+%a = (1:length(bimod_vector))'; b = num2str(a); c = cellstr(b);
+c = cell(10,1);
+c{1,1} = 'gender'; c{2,1} = 'age'; c{3,1} = 'hypertension'; c{4,1} = 'heart.disease';
+c{5,1} = 'ever.married'; c{6,1} = 'work.type'; c{7,1} = 'residence.type'; c{8,1} = 'avg.glucose.level';
+c{9,1} = 'bmi'; c{10,1} = 'smoking.status';
+scatter(avg_accuracy', bimod_vector','filled');
+dx = 0.001; dy = 0.001;
+x = avg_accuracy';
+y = bimod_vector';
+text(x+dx, y+dy, c);
+xlabel('Accuracy (in %)');
+ylabel('Bimodality');
 
 
 
@@ -146,18 +150,18 @@ input_data = normalized_data(:,2:11);
 loading_factors = l_factors(input_data);
 [RHO_loadingfactor,~] = corr(avg_accuracy', loading_factors', 'Type', 'Pearson')
 
-% figure(3);
-% c = cell(10,1);
-% c{1,1} = 'gender'; c{2,1} = 'age'; c{3,1} = 'hypertension'; c{4,1} = 'heart.disease';
-% c{5,1} = 'ever.married'; c{6,1} = 'work.type'; c{7,1} = 'residence.type'; c{8,1} = 'avg.glucose.level';
-% c{9,1} = 'bmi'; c{10,1} = 'smoking.status';
-% scatter(avg_accuracy', loading_factors','filled');
-% dx = 0.001; dy = 0.001;
-% x = avg_accuracy';
-% y = loading_factors';
-% text(x+dx, y+dy, c);
-% xlabel('Accuracy (in %)');
-% ylabel('Loading factors');
+figure(3);
+c = cell(10,1);
+c{1,1} = 'gender'; c{2,1} = 'age'; c{3,1} = 'hypertension'; c{4,1} = 'heart.disease';
+c{5,1} = 'ever.married'; c{6,1} = 'work.type'; c{7,1} = 'residence.type'; c{8,1} = 'avg.glucose.level';
+c{9,1} = 'bmi'; c{10,1} = 'smoking.status';
+scatter(avg_accuracy', loading_factors','filled');
+dx = 0.001; dy = 0.001;
+x = avg_accuracy';
+y = loading_factors';
+text(x+dx, y+dy, c);
+xlabel('Accuracy (in %)');
+ylabel('Loading factors');
 
 
 
@@ -167,20 +171,20 @@ Group = normalized_data(:,12);
 [~, wilcoxon_values] = rankfeatures(input_data', Group', 'Criterion', 'wilcoxon');
 [RHO_wil,~] = corr(avg_accuracy', wilcoxon_values, 'Type', 'Pearson')
 
-% figure(4);
-% c = cell(10,1);
-% c{1,1} = 'gender'; c{2,1} = 'age'; c{3,1} = 'hypertension'; c{4,1} = 'heart.disease';
-% c{5,1} = 'ever.married'; c{6,1} = 'work.type'; c{7,1} = 'residence.type'; c{8,1} = 'avg.glucose.level';
-% c{9,1} = 'bmi'; c{10,1} = 'smoking.status';
-% scatter(avg_accuracy, wilcoxon_values','filled');
-% dx = 0.001; dy = 0.001;
-% x = avg_accuracy';
-% y = wilcoxon_values';
-% text(x+dx, y+dy, c);
-% xlabel('Accuracy (in %)');
-% ylabel('Mann-Whitney values');
+figure(4);
+c = cell(10,1);
+c{1,1} = 'gender'; c{2,1} = 'age'; c{3,1} = 'hypertension'; c{4,1} = 'heart.disease';
+c{5,1} = 'ever.married'; c{6,1} = 'work.type'; c{7,1} = 'residence.type'; c{8,1} = 'avg.glucose.level';
+c{9,1} = 'bmi'; c{10,1} = 'smoking.status';
+scatter(avg_accuracy, wilcoxon_values','filled');
+dx = 0.001; dy = 0.001;
+x = avg_accuracy';
+y = wilcoxon_values';
+text(x+dx, y+dy, c);
+xlabel('Accuracy (in %)');
+ylabel('Mann-Whitney values');
 
 
 
 
-
+%%

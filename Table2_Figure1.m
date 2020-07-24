@@ -90,12 +90,12 @@ save('./results/score_matrix_T2_F1.mat','accuracy_matrix', 'precision_matrix', '
 load('./results/score_matrix_T2_F1.mat')
 
 % Will be done offline
-% figure(1);
-% boxplot(accuracy_matrix);
-% ylim([0 1]);
-% ylabel('Accuracy','FontSize',12);
-% set(gca,'Xtick',1:10,'XTickLabel',{'gender', 'age', 'hypertension', 'heart disease', 'ever married', 'work type', 'residence type', 'glucose level', 'bmi', 'smoking status'});
-% xtickangle(90);
+figure(1);
+boxplot(accuracy_matrix);
+ylim([0 1]);
+ylabel('Accuracy','FontSize',12);
+set(gca,'Xtick',1:10,'XTickLabel',{'gender', 'age', 'hypertension', 'heart disease', 'ever married', 'work type', 'residence type', 'glucose level', 'bmi', 'smoking status'});
+xtickangle(90);
 
 
 avg_precision = nanmean(precision_matrix);

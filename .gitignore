@@ -1,2 +1,4 @@
 .DS_Store
 *.m~
+results/figures/*.fig
+results/figures/*.pdf

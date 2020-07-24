@@ -109,15 +109,15 @@ load('./results/rmatrix_F3.mat');
 
 mean_across_percentage = mean(R_matrix);
 
-% figure(1);
-% boxplot(R_matrix);
-% %ylim([0 1]);
-% hold on;
-% plot(mean_across_percentage, 'b');
-% hold on;
-% scatter(1:10, mean_across_percentage,'filled','o', 'b');
-% set(gca,'Xtick',1:10,'XTickLabel',10:10:100);
-% xlabel('Percentage of used dataset (in %)');
-% ylabel('Correlation b/t accuracy and impact factor score');
+figure(1);
+boxplot(R_matrix);
+%ylim([0 1]);
+hold on;
+plot(mean_across_percentage, 'b');
+hold on;
+scatter(1:10, mean_across_percentage,'filled','o', 'b');
+set(gca,'Xtick',1:10,'XTickLabel',10:10:100);
+xlabel('Percentage of used dataset (in %)');
+ylabel('Correlation b/t accuracy and impact factor score');
 
 %%
