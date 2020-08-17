@@ -2,7 +2,7 @@
 
 With the spirit of reproducible research, this repository contains all the codes required to produce the results in the manuscript: 
 
-> Pathan, M. S., Zhang, J., John, D., Nag, A. and Dev, S.(2020). Forecasting Precipitable Water Vapor Using LSTMs, under review. 
+> Pathan, M. S., Zhang, J., John, D., Nag, A. and Dev, S.(2020). Identifying Stroke Indicators Using Rough Sets, under review. 
 
 
 All codes are written in `MATLAB`.
