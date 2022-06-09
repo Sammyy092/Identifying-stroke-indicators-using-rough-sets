@@ -2,10 +2,11 @@
 
 With the spirit of reproducible research, this repository contains all the codes required to produce the results in the manuscript: 
 
-> Pathan, M. S., Zhang, J., John, D., Nag, A. and Dev, S.(2020). Identifying Stroke Indicators Using Rough Sets, under review. 
+> Pathan MS, Jianbiao Z, John D, Nag A, Dev S. Identifying stroke indicators using rough sets. IEEE Access. 2020 Nov 19;8:210318-27.
 
+All codes are written in `MATLAB`. The manuscript can be accessed from [this](https://arxiv.org/pdf/2110.10152.pdf) link.
 
-All codes are written in `MATLAB`.
+Please cite the above paper if you intend to use whole/part of the code. This code is only for academic and research purposes.
 
 ### Code
 
